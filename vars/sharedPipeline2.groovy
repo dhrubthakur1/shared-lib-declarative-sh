@@ -35,7 +35,7 @@ def call(Map conf=[:]) {
 	when {
         	expression { conf.buildType == "Java" && conf.isBuildRequired == "Yes" }
           }
-		agent any
+		agent { dockerfile true }   
 			/*tools {
            			maven 'MAVEN_PATH'
           			jdk 'JAVA_HOME'
