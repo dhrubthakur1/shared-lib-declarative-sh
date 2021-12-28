@@ -44,8 +44,8 @@ def call(Map conf=[:]) {
 			stages{
 				stage("Tools initialization") {
 				       steps {
-					   bat "mvn --version"
-					   bat "java -version"
+					   sh "mvn --version"
+					   sh "java -version"
 				       }
 				   }
 				stage("Checkout Code") {
