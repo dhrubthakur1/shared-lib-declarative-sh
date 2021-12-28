@@ -31,7 +31,67 @@ def call(Map conf=[:]) {
                  }
                }
            }  
-	/////
+	stage("Build Process start"){		
+	when {
+        	expression { conf.buildType == "Java" && conf.isBuildRequired == "Yes" }
+          }
+		agent any
+			/*tools {
+           			maven 'MAVEN_PATH'
+          			jdk 'JAVA_HOME'
+       				}*/	  
+
+			stages{
+				stage("Tools initialization") {
+				       steps {
+					   bat "mvn --version"
+					   bat "java -version"
+				       }
+				   }
+				stage("Checkout Code") {
+				       steps {		       
+					 cleanWs()
+					 script{                   
+					   sh 'echo "${checkOut}"'
+					   sh "echo ${conf.url}"
+					   new CheckOut(this).startBuild(conf)					   
+					 }
+				       }
+				   }  
+				stage("Running Testcase") {
+				      steps {					   
+					script{
+					   new MVNBuild(this).mvnTest()
+					  }					
+				       }
+           			}
+				stage("Packing Application") {
+				       steps {					  
+					 script{					   
+					  new MVNBuild(this).startBuild()					  
+					 }
+				       }
+				   }
+				stage ('Archive Artifacts') {
+				  steps {
+				    script{
+				      new MVNBuild(this).archive()
+				    }				   
+				  }
+				}			
+			}		
+		} 
+	       stage("Deploy Process start"){		
+		agent any
+		when {
+        		expression { conf.deployRequired == "Yes" }
+          	}
+		steps{              
+		      script{
+			new DeployToTomcat(this).deploy(conf)
+		      }
+	       }	
+	   }	       
        }
    }
 }
