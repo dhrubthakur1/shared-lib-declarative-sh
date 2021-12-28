@@ -13,6 +13,8 @@ public class MVNBuild{
   }
   
  public void mvnTest() {
+   steps.sh 'pwd'
+   steps.sh 'ls -ltr'
      steps.echo "Test called......${steps}"
     steps.sh "mvn test"
   }
