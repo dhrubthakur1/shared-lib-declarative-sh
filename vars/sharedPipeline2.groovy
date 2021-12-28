@@ -37,7 +37,7 @@ def call(Map conf=[:]) {
           }
 		//agent { dockerfile true }   
 		agent {docker {
-                    image 'mavne:latest'                    
+                    image 'maven:latest'                    
                     reuseNode true
                 }}
 			/*tools {
