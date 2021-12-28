@@ -51,8 +51,7 @@ def call(Map conf=[:]) {
 				stage("Checkout Code") {
 				       steps {		       
 					 cleanWs()
-					 script{                   
-					   sh 'echo "${checkOut}"'
+					 script{                   					  
 					   sh "echo ${conf.url}"
 					   new CheckOut(this).startBuild(conf)					   
 					 }
