@@ -12,7 +12,7 @@ def call(Map conf=[:]) {
                steps {		       
                  script{                                      
                    sh "echo ${conf.url}"
-		   checkOut.startBuild(conf)
+		   new CheckOut(this).startBuild(conf)
 		   sh 'echo "read yml start"'
 		   def buildData = readYaml (file: 'build.yml') 
 		   def deployData = readYaml (file: 'deploy.yml') 
