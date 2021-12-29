@@ -2,7 +2,7 @@ import com.checkout.CheckOut;
 import com.build.MVNBuild;
 import com.deploy.DeployToTomcat;
 
-def call(Map conf=[:]) {
+void call(Map conf=[:]) {
 	
   pipeline {
        agent none
