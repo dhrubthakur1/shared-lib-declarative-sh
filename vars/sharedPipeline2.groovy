@@ -39,8 +39,7 @@ void call(Map conf=[:]) {
 		//agent { dockerfile true }   
 		agent {docker {
                     image 'maven:3-jdk-8-alpine'                    
-                    args '-v $WORKSPACE:/tmp/' 
-		    args '-w /tmp/' 
+                    args '-v $WORKSPACE:/tmp/ -w /tmp/' 		    
                 }}
 			/*tools {
            			maven 'MAVEN_PATH'
