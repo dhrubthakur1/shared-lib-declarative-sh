@@ -36,11 +36,10 @@ void call(Map conf=[:]) {
 	when {
         	expression { conf.buildType == "Java" && conf.isBuildRequired == "Yes" }
           }
-		//agent { dockerfile true }   
-		agent {docker {
-                    image 'maven:3-jdk-8-alpine'                    
-		    args "-v ${env.JENKINS_HOME}:/tmp/ -w /tmp/"
-                }}
+		agent { dockerfile true }   
+		/*agent {docker {
+                    image 'maven:3-jdk-8-alpine'                    		    
+                }}*/
 			/*tools {
            			maven 'MAVEN_PATH'
           			jdk 'JAVA_HOME'
