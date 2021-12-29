@@ -79,8 +79,17 @@ void call(Map conf=[:]) {
 				}			
 			}		
 		} 
-	      
-	       
+	       stage("Deploy Process start"){		
+		agent any
+		when {
+        		expression { conf.deployRequired == "Yes" }
+          	}
+		steps{              
+		      script{
+			new DeployToTomcat(this).deploy(conf)
+		      }
+	       }	
+	   }	       
        }
    }
 }
