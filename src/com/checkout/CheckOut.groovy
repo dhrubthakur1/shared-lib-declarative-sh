@@ -6,6 +6,8 @@ public class CheckOut {
   public CheckOut(steps) {
     steps.echo(steps.getClass().toString())
     steps.echo(this.steps.getClass().toString())
+     steps.echo(steps.getClass().getSuperclass().toString())
+    steps.echo(this.steps.getClass().getSuperclass().toString())
     this.steps = steps
   }
   
