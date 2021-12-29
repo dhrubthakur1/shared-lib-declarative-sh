@@ -11,7 +11,7 @@ public class CheckOut {
   
   public void startBuild(Map conf = [:]) {
     steps.echo '"CheckOut Startbuild is called"'
-    steps.echo "${steps..getClass().toString()} ${conf.url}  ${conf.branch}"    
+    steps.echo "${steps.getClass().toString()} ${conf.url}  ${conf.branch}"    
     steps.sh "ifconfig"
     steps.checkout([
                     $class: 'GitSCM',
