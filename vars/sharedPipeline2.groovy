@@ -2,8 +2,9 @@ import com.checkout.CheckOut;
 import com.build.MVNBuild;
 import com.deploy.DeployToTomcat;
 
+CheckOut checkout=  new CheckOut(this)
 void call(Map conf=[:]) {
-	
+
   pipeline {
        agent none
        stages {  	     
@@ -12,7 +13,7 @@ void call(Map conf=[:]) {
                steps {		       
                  script{                                      
                    sh "echo ${conf.url}"
-		   new CheckOut(this).startBuild(conf)
+		   checkout.startBuild(conf)
 		   sh 'echo "read yml start"'
 		   def buildData = readYaml (file: 'build.yml') 
 		   def deployData = readYaml (file: 'deploy.yml') 
