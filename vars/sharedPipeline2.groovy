@@ -4,7 +4,7 @@ import com.deploy.DeployToTomcat;
 
 
 void call(Map conf=[:]) {
-CheckOut checkout=  new CheckOut(this);
+
   pipeline {
        agent none
        stages {  	     
@@ -13,7 +13,7 @@ CheckOut checkout=  new CheckOut(this);
                steps {		       
                  script{                                      
                    sh "echo ${conf.url}"
-		   checkout.startBuild(conf)
+		   new CheckOut(this).startBuild(conf)
 		   sh 'echo "read yml start"'
 		   def buildData = readYaml (file: 'build.yml') 
 		   def deployData = readYaml (file: 'deploy.yml') 
