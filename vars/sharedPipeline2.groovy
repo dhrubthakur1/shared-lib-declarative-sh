@@ -39,12 +39,7 @@ void call(Map conf=[:]) {
 		agent { dockerfile true }   
 		/*agent {docker {
                     image 'maven:3-jdk-8-alpine'                    		    
-                }}*/
-			/*tools {
-           			maven 'MAVEN_PATH'
-          			jdk 'JAVA_HOME'
-       				}*/	  
-
+                }}*/			  
 			stages{
 				stage("Tools initialization") {
 				       steps {
