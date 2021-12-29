@@ -2,9 +2,9 @@ import com.checkout.CheckOut;
 import com.build.MVNBuild;
 import com.deploy.DeployToTomcat;
 
-CheckOut checkout=  new CheckOut(this)
-void call(Map conf=[:]) {
 
+void call(Map conf=[:]) {
+CheckOut checkout=  new CheckOut(this);
   pipeline {
        agent none
        stages {  	     
