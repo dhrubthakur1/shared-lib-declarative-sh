@@ -21,11 +21,13 @@ public class MVNBuild{
   
   public void startBuild() {
     steps.echo "Build called......${steps}"
-    if(steps.script.isUnix()){
+    script{
+    if(isUnix()){
       steps.sh "mvn clean package  -DskipTests"
     } else {
       steps.echo "Running on window system......"
       steps.bat "mvn clean package  -DskipTests"
+    }
     }
   }
   
