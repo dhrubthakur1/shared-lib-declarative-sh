@@ -7,9 +7,9 @@ public class CheckOut {
     this.steps = steps
   }
   
-  public void startBuild(def conf = [:]) {
+  public void startBuild(Map conf = [:]) {
     steps.echo '"CheckOut Startbuild is called"'
-    steps.echo "${steps} ${conf.url}  ${conf.branch}"    
+    steps.echo "${steps.getClass()} ${conf.url}  ${conf.branch}"    
     steps.sh "ifconfig"
     steps.checkout([
                     $class: 'GitSCM',
