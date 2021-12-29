@@ -1,9 +1,9 @@
 package com.checkout;
 
 public class CheckOut {
-  def steps
+  sharedPipeline2  steps
   
-  public CheckOut(steps) {
+  public CheckOut(sharedPipeline2  steps) {
     this.steps = steps
   }
   
