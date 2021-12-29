@@ -15,11 +15,10 @@ public class CheckOut {
     steps.echo '"CheckOut Startbuild is called"'
     steps.echo "${steps.getClass().toString()} ${conf.url}  ${conf.branch}"    
     steps.sh "ifconfig"
-   /* steps.checkout([
+   steps.checkout([
                     $class: 'GitSCM',
                     branches: [[name:  conf.branch ]],
                     userRemoteConfigs: [[ url: conf.url ]]
-                  ])
-    */
+                  ])    
   }
 }
