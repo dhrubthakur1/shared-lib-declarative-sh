@@ -21,8 +21,8 @@ public class MVNBuild{
   
   public void startBuild() {
     steps.echo "Build called......${steps}"
-    
     if(steps.isUnix()){
+      steps.echo "Running on Unix box"
       steps.sh "mvn clean package  -DskipTests"
     } else {
       steps.echo "Running on window system......"
